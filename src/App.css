@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+
+  background-color: whitesmoke;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: white;
+  padding: 1em 2.4em;
+  border-radius: .8em;
+  box-shadow: var(--shadow);
+
+  color: var(--color);
+}
+.App .SignIn-button {
+  border: none;
+  outline: none;
+
+  background-color: var(--color);
+  filter: brightness(90%);
+  padding: .6em;
+  border-radius: .3rem;
+  color: whitesmoke;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: .2s ease;
+}
+.App .SignIn-button:hover {
+  box-shadow: var(--shadow);
+  filter: brightness(115%);
+}
+.App .SignIn-button:active {
+  scale: 97%;
 }
