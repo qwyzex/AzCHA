@@ -1,0 +1,63 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100vw;
+  height: 100vh;
+  color: var(--color);
+  background: url(../img/background.jpg);
+  box-shadow: var(--shadow);
+}
+.App .header {
+  background: whitesmoke;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+.App .header > h1 {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.App .container {
+  height: 100%;
+}
+.App .container .SignIn-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  outline: 2px solid #00000000;
+  border: none;
+  background-color: #f1f1f1;
+  padding: 0.8em;
+  color: #322936;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.App .container .SignIn-button:hover {
+  box-shadow: 0 0.2rem 0.6rem #32323280;
+  transform: translateY(-0.4rem);
+  outline: 2px solid #322936;
+}
+.App .container .SignIn-button:active {
+  transform: translateY(-0.2rem);
+}
+.App .container .SignIn-button svg {
+  height: 30px;
+}
+
+/*# sourceMappingURL=App.css.map */
