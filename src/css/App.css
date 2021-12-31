@@ -89,16 +89,16 @@ body {
 .App .chatroom .messages-wrapper div.sent {
   flex-direction: row-reverse;
   align-self: flex-end;
-  background: #003cff;
+  background: #3665ff;
   color: white;
 }
 .App .chatroom .messages-wrapper div.sent ::selection {
   background: white;
-  color: #003cff;
+  color: #3665ff;
 }
 .App .chatroom .messages-wrapper div.sent ::-moz-selection {
   background: white;
-  color: #003cff;
+  color: #3665ff;
 }
 .App .chatroom .messages-wrapper div.received {
   align-self: flex-start;
@@ -128,7 +128,7 @@ body {
   padding: 1rem;
 }
 .App .chatroom form input:focus {
-  box-shadow: 0 0 0 3px #003cff inset;
+  box-shadow: 0 0 0 3px #3665ff inset;
 }
 .App .chatroom form button {
   border: none;
@@ -137,15 +137,78 @@ body {
   height: 100%;
   width: 5rem;
   font-weight: 600;
-  background-color: #003cff;
+  background-color: #3665ff;
   color: #f1f1f1;
   transition: 0.3s ease;
 }
+.App .chatroom form button.empty {
+  background-color: #002ab6;
+}
 .App .chatroom form button:hover {
-  background-color: #1a50ff;
+  background-color: #5079ff;
 }
 .App .chatroom form button:active {
-  background-color: #001e80;
+  background-color: #002ab6;
+}
+.App .home {
+  background: linear-gradient(#00000040, #00000040), url(../img/background-2.jpg);
+  background-size: cover;
+  padding: 3rem;
+}
+.App .home h1 {
+  font-size: 230%;
+}
+.App .home div {
+  padding: 2rem 0;
+  display: flex;
+  gap: 2rem;
+}
+.App .home div button, .App .home div a {
+  width: min-content;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  outline: 2px solid #00000000;
+  border: none;
+  background-color: #f1f1f1;
+  padding: 0.8em 1.4rem;
+  color: #323133;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.App .home div button:hover, .App .home div a:hover {
+  color: #fff;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(0.6rem);
+  box-shadow: 0 0.2rem 0.6rem #32323280;
+  transform: translateY(-0.4rem);
+}
+.App .home div button:hover:nth-child(1), .App .home div a:hover:nth-child(1) {
+  background-color: rgba(255, 0, 60, 0.6);
+}
+.App .home div button:hover:nth-child(2), .App .home div a:hover:nth-child(2) {
+  background-color: rgba(59, 59, 69, 0.8);
+}
+.App .home div button:hover:nth-child(3), .App .home div a:hover:nth-child(3) {
+  background-color: #ffffff;
+  color: #323133;
+}
+.App .home div button:hover img, .App .home div a:hover img {
+  filter: invert(100%);
+}
+.App .home div button:active, .App .home div a:active {
+  transform: translateY(-0.2rem);
+}
+.App .home div button img, .App .home div button svg, .App .home div a img, .App .home div a svg {
+  height: 3rem !important;
+  width: 3rem !important;
+  transition: 0.4s ease;
 }
 
 /*# sourceMappingURL=App.css.map */

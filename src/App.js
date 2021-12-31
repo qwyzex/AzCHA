@@ -30,7 +30,7 @@ function App() {
 		<div className="App">
 			<header className="header">
 				<h1>AzCHA</h1>
-				{user ? <SignOut /> : <SignIn />}
+				{user ? <SignOut /> : <SignIn name='Sign In' />}
 			</header>
 			{user ? <ChatRoom /> : <Home />}
 		</div>
@@ -39,7 +39,7 @@ function App() {
 
 const Home = () => {
 	return (
-		<div>
+		<div className='home'>
 			<h1>AzCHA</h1>
 			<p>
 				<x-acc>"Attemp-Zero"</x-acc> Chat App is an open-source project created by <x-acc>qwyzex</x-acc>, this is a chat app. Using Vanilla React and Firebase.
@@ -47,11 +47,22 @@ const Home = () => {
 			<p>
 				The project initially begin on October 13th 2021. I don't actually want this to be a product or a real social media chat app, I make this to learn React and databases management with Firebase.
 			</p>
+			<div>
+				<a href='https://qwzz.netlify.app' target='_blank' rel='noreferrer'>
+					<img src='/solewhite.png' alt='qwyzex-icon' />
+					<p>MY PERSONAL SITE</p>
+				</a>
+				<a href='https://github.com/qwyzex/AzCHA' target='_blank' rel='noreferrer'>
+					<img src='/github.png' alt='github-icon' />
+					<p>SOURCE CODE</p>
+				</a>
+				<SignIn name='Get Started'/>
+			</div>
 		</div>
 	)
 }
 
-function SignIn() {
+export function SignIn(props) {
 	const signInWithGoogle = () => {
 		const provider = new firebase.auth.GoogleAuthProvider();
 		auth.signInWithRedirect(provider);
@@ -82,7 +93,7 @@ function SignIn() {
 			onClick={signInWithGoogle}
 		>
 			<GoogleSVG />
-			Sign In
+			<p>{props.name}</p>
 		</button>
 	)
 }
@@ -119,7 +130,7 @@ function ChatRoom() {
 
 	const SubmitButton = () => {
 		if (formValue === '') {
-			return <button type='submit' className='empty'>EMPTY</button>
+			return <button type='submit' className='empty' disabled>SEND</button>
 		} else {
 			return <button type='submit'>SEND</button>
 		}
