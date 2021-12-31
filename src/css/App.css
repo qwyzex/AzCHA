@@ -17,8 +17,6 @@ body {
   background: url(../img/background.jpg);
 }
 .App .header {
-  position: absolute;
-  top: 0;
   background: whitesmoke;
   width: 100%;
   padding: 1rem 2rem;
@@ -61,8 +59,7 @@ body {
   user-select: none;
 }
 .App .chatroom {
-  min-height: 100vh;
-  padding-top: 5rem;
+  min-height: calc(100vh - 5rem);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -120,7 +117,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: var(--form-height, 3rem);
 }
 .App .chatroom form input {
   height: 100%;
