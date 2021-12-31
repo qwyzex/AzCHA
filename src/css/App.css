@@ -1,3 +1,21 @@
+@media (max-width: 60rem) {
+  .home > div {
+    flex-direction: column-reverse;
+    gap: 0.6rem;
+  }
+  .home > div button:hover, .home > div a:hover {
+    transform: translateX(0.7rem);
+  }
+}
+@media (min-width: 60rem) {
+  .home > div {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .home > div button:hover, .home > div a:hover {
+    transform: translateY(-0.4rem);
+  }
+}
 body {
   min-height: 100vh;
   display: flex;
@@ -12,7 +30,6 @@ body {
   grid-template-rows: 5rem 1fr;
   min-width: 100vw;
   height: 100vh;
-  overflow: hidden;
   color: var(--color);
   background: url(../img/background.jpg);
 }
@@ -140,9 +157,19 @@ body {
   background-color: #3665ff;
   color: #f1f1f1;
   transition: 0.3s ease;
+  cursor: pointer;
 }
 .App .chatroom form button.empty {
-  background-color: #002ab6;
+  background-color: #001350;
+  cursor: default;
+}
+.App .chatroom form button.empty:hover {
+  background-color: #001350;
+  cursor: default;
+}
+.App .chatroom form button.empty:active {
+  background-color: #001350;
+  cursor: default;
 }
 .App .chatroom form button:hover {
   background-color: #5079ff;
@@ -153,7 +180,8 @@ body {
 .App .home {
   background: linear-gradient(#00000040, #00000040), url(../img/background-2.jpg);
   background-size: cover;
-  padding: 3rem;
+  padding: 1.8rem min(3rem, 10vw);
+  overflow: auto;
 }
 .App .home h1 {
   font-size: 230%;
@@ -161,7 +189,6 @@ body {
 .App .home div {
   padding: 2rem 0;
   display: flex;
-  gap: 2rem;
 }
 .App .home div button, .App .home div a {
   width: min-content;
@@ -187,7 +214,6 @@ body {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(0.6rem);
   box-shadow: 0 0.2rem 0.6rem #32323280;
-  transform: translateY(-0.4rem);
 }
 .App .home div button:hover:nth-child(1), .App .home div a:hover:nth-child(1) {
   background-color: rgba(255, 0, 60, 0.6);

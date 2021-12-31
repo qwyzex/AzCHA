@@ -56,7 +56,7 @@ const Home = () => {
 					<img src='/github.png' alt='github-icon' />
 					<p>SOURCE CODE</p>
 				</a>
-				<SignIn name='Get Started'/>
+				<SignIn name='GET STARTED'/>
 			</div>
 		</div>
 	)
