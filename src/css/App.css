@@ -4,24 +4,53 @@ body {
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
+  scroll-behavior: smooth;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  width: 100vw;
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+  min-width: 100vw;
   height: 100vh;
+  overflow: hidden;
   color: var(--color);
   background: url(../img/background.jpg);
-  box-shadow: var(--shadow);
 }
 .App .header {
+  position: absolute;
+  top: 0;
   background: whitesmoke;
   width: 100%;
   padding: 1rem 2rem;
+  box-shadow: 0 0.3rem 0.6rem #32323280;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.App .header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  outline: 2px solid #00000000;
+  border: none;
+  background-color: #f1f1f1;
+  padding: 0.8em;
+  color: #323133;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.App .header button:hover {
+  box-shadow: 0 0.2rem 0.6rem #32323280;
+  transform: translateY(-0.4rem);
+  outline: 2px solid #323133;
+}
+.App .header button:active {
+  transform: translateY(-0.2rem);
+}
+.App .header button svg {
+  height: 30px;
 }
 .App .header > h1 {
   -webkit-user-select: none;
@@ -31,33 +60,95 @@ body {
   -o-user-select: none;
   user-select: none;
 }
-.App .container {
-  height: 100%;
-}
-.App .container .SignIn-button {
+.App .chatroom {
+  min-height: 100vh;
+  padding-top: 5rem;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.App .chatroom .messages-wrapper {
+  overflow-y: auto;
+  width: 100vw;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.App .chatroom .messages-wrapper div {
+  width: max-content;
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  display: flex;
+  gap: 1rem;
+  word-wrap: break-word;
+  max-width: min(30rem, 65vw);
+}
+.App .chatroom .messages-wrapper div img {
+  height: 2em;
+  border-radius: 50%;
+}
+.App .chatroom .messages-wrapper div.sent {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+  background: #003cff;
+  color: white;
+}
+.App .chatroom .messages-wrapper div.sent ::selection {
+  background: white;
+  color: #003cff;
+}
+.App .chatroom .messages-wrapper div.sent ::-moz-selection {
+  background: white;
+  color: #003cff;
+}
+.App .chatroom .messages-wrapper div.received {
+  align-self: flex-start;
+  background: #323133;
+  color: white;
+}
+.App .chatroom .messages-wrapper div.received ::selection {
+  background: white;
+  color: #323133;
+}
+.App .chatroom .messages-wrapper div.received ::-moz-selection {
+  background: white;
+  color: #323133;
+}
+.App .chatroom form {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.6rem;
-  outline: 2px solid #00000000;
+  height: 3rem;
+}
+.App .chatroom form input {
+  height: 100%;
   border: none;
-  background-color: #f1f1f1;
-  padding: 0.8em;
-  color: #322936;
+  outline: 2px solid #00000000;
+  transition: 0.3s ease;
+  width: 100%;
+  padding: 1rem;
+}
+.App .chatroom form input:focus {
+  box-shadow: 0 0 0 3px #003cff inset;
+}
+.App .chatroom form button {
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem;
+  height: 100%;
+  width: 5rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: 0.5s ease;
+  background-color: #003cff;
+  color: #f1f1f1;
+  transition: 0.3s ease;
 }
-.App .container .SignIn-button:hover {
-  box-shadow: 0 0.2rem 0.6rem #32323280;
-  transform: translateY(-0.4rem);
-  outline: 2px solid #322936;
+.App .chatroom form button:hover {
+  background-color: #1a50ff;
 }
-.App .container .SignIn-button:active {
-  transform: translateY(-0.2rem);
-}
-.App .container .SignIn-button svg {
-  height: 30px;
+.App .chatroom form button:active {
+  background-color: #001e80;
 }
 
 /*# sourceMappingURL=App.css.map */

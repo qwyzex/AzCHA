@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './css/App.css';
 import './css/index.css';
 
@@ -30,11 +30,9 @@ function App() {
 		<div className="App">
 			<header className="header">
 				<h1>AzCHA</h1>
-				<SignOut />
+				{user ? <SignOut /> : <SignIn />}
 			</header>
-			<section className='container'>
-				{user ? <ChatRoom /> : <Home />}
-			</section>
+			{user ? <ChatRoom /> : <Home />}
 		</div>
 	);
 }
@@ -49,7 +47,6 @@ const Home = () => {
 			<p>
 				The project initially begin on October 13th 2021. I don't actually want this to be a product or a real social media chat app, I make this to learn React and databases management with Firebase.
 			</p>
-			<SignIn />
 		</div>
 	)
 }
@@ -57,7 +54,7 @@ const Home = () => {
 function SignIn() {
 	const signInWithGoogle = () => {
 		const provider = new firebase.auth.GoogleAuthProvider();
-		auth.signInWithPopup(provider);
+		auth.signInWithRedirect(provider);
 	}
 
 	const GoogleSVG = () => {
@@ -97,34 +94,53 @@ function SignOut() {
 }
 
 function ChatRoom() {
+	const dummy = useRef();
 	const messagesRef = firestore.collection('messages');
-	const query = messagesRef.orderBy('createdAt').limit(30);
+	const query = messagesRef.orderBy('createdAt').limit(80);
 	const [messages] = useCollectionData(query, {idField: 'id'});
 	const [formValue, setFormValue] = useState('');
 	const sendMessage = async(e) => {
 		e.preventDefault();
 		const { uid, photoURL } = auth.currentUser;
 
-		await messagesRef.add({
-			text: formValue,
-			createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-			uid,
-			photoURL
-		})
+		if (formValue === '') {
+		} else { 			
+			await messagesRef.add({
+				text: formValue,
+				createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+				uid,
+				photoURL
+			})
+			setFormValue('');
+			dummy.current.scrollIntoView({ behavior: 'smooth' });
+		}
 
-		setFormValue('');
+	}
+
+	const SubmitButton = () => {
+		if (formValue === '') {
+			return <button type='submit' className='empty'>EMPTY</button>
+		} else {
+			return <button type='submit'>SEND</button>
+		}
 	}
 
 	return (
-		<>
-			<div>
+		<div className='chatroom'>
+			<div className='messages-wrapper'>
 				{messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)} 
+				<span ref={dummy}></span>
 			</div>
 			<form onSubmit={sendMessage}>
-				<input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-				<button type='submit'>SEND</button>
+				<input 
+					autoFocus
+					value={formValue} 
+					onChange={(e) => setFormValue(e.target.value)} 
+					placeholder='Type your message here...'
+					/>
+				<SubmitButton />
 			</form>
-		</>
+		</div>
 	)
 }
 
@@ -135,7 +151,7 @@ function ChatMessage(props) {
 
 	return (
 		<div className={`message ${messageClass}`}>
-			<img src={photoURL} alt="pfp" />
+			<img src={photoURL} alt="profile" />
 			<p>{text}</p>
 		</div>
 	)
