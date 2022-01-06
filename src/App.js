@@ -39,7 +39,6 @@ function App() {
 }
 
 const Home = () => {
-<<<<<<< HEAD
 	return (
 		<div className='home'>
 			<h1>AzCHA</h1>
@@ -66,44 +65,6 @@ const Home = () => {
 		</div>
 	)
 }
-=======
-    return (
-        <div className="home">
-            <h1>AzCHA</h1>
-            <p>
-                <x-acc>"Attemp-Zero"</x-acc> Chat App is an open-source project
-                created by <x-acc>qwyzex</x-acc>, this is a chat app. Using
-                Vanilla React and Firebase.
-            </p>
-            <p>
-                The project initially begin on October 13th 2021. I don't
-                actually want this to be a product or a real social media chat
-                app, I make this to learn React and databases management with
-                Firebase.
-            </p>
-            <div>
-                <a
-                    href="https://qwzz.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <img src="/solewhite.png" alt="qwyzex-icon" />
-                    <p>MY PERSONAL SITE</p>
-                </a>
-                <a
-                    href="https://github.com/qwyzex/AzCHA"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <img src="/github.png" alt="github-icon" />
-                    <p>SOURCE CODE</p>
-                </a>
-                <SignIn name="GET STARTED" />
-            </div>
-        </div>
-    );
-};
->>>>>>> aa64b461e4e81f9e5d3cbcbcb8e86cc772add894
 
 export function SignIn(props) {
     const signInWithGoogle = () => {
@@ -159,7 +120,6 @@ function SignOut() {
 }
 
 function ChatRoom() {
-<<<<<<< HEAD
 	const dummy = useRef();
 	const messagesRef = firestore.collection('messages');
 	const query = messagesRef.orderBy('createdAt', 'desc').limit(120);
@@ -168,16 +128,6 @@ function ChatRoom() {
 	const sendMessage = async(e) => {
 		e.preventDefault();
 		const { uid, photoURL } = auth.currentUser;
-=======
-    const dummy = useRef();
-    const messagesRef = firestore.collection("messages");
-    const query = messagesRef.orderBy("createdAt", "asc");
-    const [messages] = useCollectionData(query, {idField: "id"});
-    const [formValue, setFormValue] = useState("");
-    const sendMessage = async (e) => {
-        e.preventDefault();
-        const {uid, photoURL} = auth.currentUser;
->>>>>>> aa64b461e4e81f9e5d3cbcbcb8e86cc772add894
 
         if (formValue === "") {
         } else {
@@ -204,7 +154,6 @@ function ChatRoom() {
         }
     };
 
-<<<<<<< HEAD
 	const SubmitButton = () => {
 		if (formValue === '') {
 			return <button type='submit' className='empty' disabled>SEND</button>
@@ -231,28 +180,6 @@ function ChatRoom() {
 			</form>
 		</div>
 	)
-=======
-    return (
-        <div className="chatroom">
-            <div className="messages-wrapper">
-                {messages &&
-                    messages.map((msg) => (
-                        <ChatMessage key={msg.id} message={msg} />
-                    ))}
-                <span ref={dummy}></span>
-            </div>
-            <form onSubmit={sendMessage}>
-                <input
-                    autoFocus
-                    value={formValue}
-                    onChange={(e) => setFormValue(e.target.value)}
-                    placeholder="Type your message here..."
-                />
-                <SubmitButton />
-            </form>
-        </div>
-    );
->>>>>>> aa64b461e4e81f9e5d3cbcbcb8e86cc772add894
 }
 
 function ChatMessage(props) {
