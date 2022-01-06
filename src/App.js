@@ -58,6 +58,9 @@ const Home = () => {
 				</a>
 				<SignIn name='GET STARTED'/>
 			</div>
+            <p className='version'>
+                V0.2
+            </p>
 		</div>
 	)
 }
@@ -107,7 +110,7 @@ function SignOut() {
 function ChatRoom() {
 	const dummy = useRef();
 	const messagesRef = firestore.collection('messages');
-	const query = messagesRef.orderBy('createdAt').limit(80);
+	const query = messagesRef.orderBy('createdAt', 'desc').limit(120);
 	const [messages] = useCollectionData(query, {idField: 'id'});
 	const [formValue, setFormValue] = useState('');
 	const sendMessage = async(e) => {
@@ -138,9 +141,10 @@ function ChatRoom() {
 
 	return (
 		<div className='chatroom'>
-			<div className='messages-wrapper'>
+			<div className='messages-wrapper'>				
+        <span ref={dummy}></span>
 				{messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)} 
-				<span ref={dummy}></span>
+
 			</div>
 			<form onSubmit={sendMessage}>
 				<input 
